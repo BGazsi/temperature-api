@@ -5,7 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const whiteList = ['https://bgazsi.github.io/', 'http://localhost:3001'];
+const whiteList = ['https://bgazsi.github.io', 'http://localhost:3001'];
 const corsOptions = {
   origin: (origin, callback) => {
     if (whiteList.indexOf(origin) !== -1 || !origin) {
