@@ -11,8 +11,8 @@
     "dev": "nodemon server/server.js",
     "start": "node server/server.js",
     "check-coverage": "nyc report --check-coverage --lines 100",
-    "lint": "eslint --ignore-path .gitignore .",
-    "fix": "eslint --ignore-path .gitignore . --fix",
+    "lint": "eslint --ignore-path .eslintignore .",
+    "fix": "eslint --ignore-path .eslintignore . --fix",
     "test": "nyc mocha test --recursive --exit"
   },
   "nyc": {
@@ -31,7 +31,9 @@
     ]
   },
   "dependencies": {
+    "@cloudant/cloudant": "^4.3.0",
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "ibm-cloud-env": "^0",
     "swagger-ui-express": "^4.1.6"
@@ -40,12 +42,17 @@
     "chai": "^4.2.0",
     "eslint": "^7.17.0",
     "eslint-config-strongloop": "^2.1.0",
-    "husky": "^4.3.6",
     "mocha": "^8.2.1",
     "nodemon": "^2.0.6",
     "nyc": "^15.1.0",
     "sinon": "^9.2.2",
     "sinon-chai": "^3.5.0",
-    "supertest": "^6.0.1"
+    "supertest": "^6.0.1",
+    "babel-eslint": "^10.1.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.0.0"
   }
 }

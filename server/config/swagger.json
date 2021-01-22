@@ -2,7 +2,7 @@
    "swagger": "2.0",
    "info": {
       "version": "1.0.0",
-      "title": "nodejsexpressapp API"
+      "title": "Temperature API"
    },
    "consumes": [
       "text/plain"
@@ -13,8 +13,8 @@
    "paths": {
       "/health": {
          "get": {
-            "operationId": "get",
-            "description": "Get health status of nodejsmicroservice",
+            "operationId": "get-health",
+            "description": "Get health status of Temperature API",
             "responses": {
                "200": {
                   "description": "Health check response",
@@ -29,6 +29,28 @@
                }
             }
          }
+      },
+      "/getTemps": {
+         "get": {
+            "operationId": "get",
+            "description": "Get a list of temperature data stored in the DB",
+            "responses": {
+               "200": {
+                  "description": "Temperature list response",
+                  "schema": {
+                     "$ref": "#/definitions/tempResponse"
+                  },
+                  "examples": {
+                     "application/json": {
+                        "temperatureData": [
+                           {"temp":"24.0","humidity":"33.0","timestamp":"1611257360930"},
+                           {"temp":"23.7","humidity":"33.6","timestamp":"1611257421466"}
+                        ]
+                     }
+                  }
+               }
+            }
+         }
       }
    },
    "definitions": {
@@ -37,6 +59,27 @@
          "properties": {
             "status": {
                "type": "string"
+            }
+         }
+      },
+      "tempResponse": {
+         "type": "object",
+         "properties": {
+            "temperatureData": {
+               "type": "array",
+               "items": {
+                  "properties": {
+                     "temp": {
+                        "type": "number"
+                     },
+                     "humidity": {
+                        "type": "number"
+                     },
+                     "timestamp": {
+                        "type": "number"
+                     }
+                  }
+               }
             }
          }
       }

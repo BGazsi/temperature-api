@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // import dependencies and initialize express
 const express = require('express');
 const path = require('path');
@@ -5,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const healthRoutes = require('./routes/health-route');
 const swaggerRoutes = require('./routes/swagger-route');
+const apiRoutes = require('./routes/api-route');
 
 const app = express();
 
@@ -15,6 +17,7 @@ app.use(bodyParser.json());
 // routes and api calls
 app.use('/health', healthRoutes);
 app.use('/swagger', swaggerRoutes);
+app.use('/api', apiRoutes);
 
 // default path to serve up index.html (single page application)
 app.all('', (req, res) => {
@@ -31,6 +34,7 @@ app.listen(port, () => {
 // error handler for unmatched routes or api calls
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, '../public', '404.html'));
+  next();
 });
 
 module.exports = app;
