@@ -24,7 +24,7 @@ exports.addClient = (req, res) => {
   });
   res.flushHeaders();
   // After client opens connection send all nests as string
-  res.write(JSON.stringify({ success: true }));
+  res.write('Connection is ready \n\n');
   // Generate an id based on timestamp and save res
   // object of client connection on clients list
   // Later we'll iterate it and send updates to each client
